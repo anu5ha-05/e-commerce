@@ -27,7 +27,7 @@ MongoDB (Cart)
 
 Elasticsearch (Search Indexing)
 
-Find the Data Model, api specs and architecture diagram here - https://gdncomm.atlassian.net/wiki/spaces/PROJ/pages/edit-v2/1798373458?draftShareId=56d00935-3a1b-4402-99c7-d1483b39ce59
+Find the Data Model, api specs and architecture diagram from the attached pdf
 
 The API Gateway contains several core components. SecurityConfig defines public and protected routes and configures the filter chain. JwtFilter validates JWT tokens from the Authorization header, extracts the userId, and sets the Spring Security authentication context. The CartUserIdGatewayFilter runs after JwtFilter for cart-related endpoints, extracts the userId from the authenticated context, and injects an X-User-Id header into requests sent to the Cart Service using HttpServletRequestWrapper. The AuthController handles the login endpoint, makes Feign calls to the Member Service for credential validation, and generates JWT tokens upon successful authentication. The JWTService generates tokens with the userId as the subject, validates signatures and expiration, and sets tokens to expire after one hour.
 
